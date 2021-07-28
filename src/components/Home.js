@@ -15,9 +15,12 @@ import noImage from "../images/no_image.jpg";
 
 const Home = () => {
   // Using/loading custom Hook
-  const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm, setIsBtnClicked } =
+    useHomeFetch();
 
   console.log(state);
+
+  if (error) return <div>Something went wrong...</div>;
 
   return (
     <>
@@ -45,8 +48,13 @@ const Home = () => {
           />
         ))}
       </Grid>
-      {/* <Button text="Load More" callBack={() => {}}></Button> */}
-      <Spinner></Spinner>
+      {loading && <Spinner />}
+      {state.page < state.total_pages && !loading && (
+        <Button
+          text="Load More"
+          callBack={() => setIsBtnClicked(true)}
+        ></Button>
+      )}
     </>
   );
 };

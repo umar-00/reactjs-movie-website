@@ -15,6 +15,7 @@ export const useHomeFetch = () => {
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
 
   console.log("Search Term:", searchTerm);
 
@@ -44,5 +45,17 @@ export const useHomeFetch = () => {
     fetchMovies(searchTerm, 1);
   }, [searchTerm]);
 
-  return { state, loading, error, searchTerm, setSearchTerm };
+  useEffect(() => {
+    if (!isBtnClicked) return;
+
+    fetchMovies(searchTerm, state.page + 1);
+
+    console.log("Pages: ", state.page);
+
+    setIsBtnClicked(false);
+
+    // return () => {};
+  }, [isBtnClicked, searchTerm, state.page]);
+
+  return { state, loading, error, searchTerm, setSearchTerm, setIsBtnClicked };
 };
