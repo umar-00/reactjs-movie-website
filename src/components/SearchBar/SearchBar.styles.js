@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 0 20px;
   background: var(--darkGrey);
 `;
 
@@ -11,7 +13,8 @@ export const Content = styled.div`
   background: var(--medGrey);
   max-width: var(--maxWidth);
   width: 100%;
-  margin: 20px;
+  height: 55px;
+  margin: 20px 0;
   border-radius: 100px;
   padding: 5px 10px;
 
@@ -28,7 +31,6 @@ export const Content = styled.div`
     font-size: var(--fontBig);
   }
 
-  textarea:focus,
   input:focus {
     outline: none;
   }
