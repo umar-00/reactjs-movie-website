@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  width: 100%;
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 20%,
@@ -13,6 +14,8 @@ export const Wrapper = styled.div`
   background-repeat: no-repeat;
   height: 85vh;
   position: relative;
+  padding: 40px;
+
   animation: animateHeroImage 1s;
 
   @keyframes animateHeroImage {
@@ -26,7 +29,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 20px;
   margin: 0 auto;
   max-width: var(--maxWidth);
 `;

@@ -4,15 +4,15 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 40px;
   background: var(--darkGrey);
 `;
 
 export const Content = styled.div`
   display: flex;
   background: var(--medGrey);
-  max-width: var(--maxWidth);
   width: 100%;
+  max-width: var(--maxWidth);
   height: 55px;
   margin: 20px 0;
   border-radius: 100px;
