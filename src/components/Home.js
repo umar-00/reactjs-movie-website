@@ -38,6 +38,7 @@ const Home = () => {
         {state.results.map((movie) => (
           <Thumb
             key={movie.id}
+            // key={Math.floor(Math.random() * 1000)}
             clickable
             image={
               movie.poster_path

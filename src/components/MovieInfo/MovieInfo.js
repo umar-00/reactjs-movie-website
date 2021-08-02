@@ -1,7 +1,7 @@
 import React from "react";
 
 import Thumb from "../Thumb/Thumb";
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from "../../config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 
 // Styles
 import { Wrapper, Content, Text } from "./MovieInfo.styles";

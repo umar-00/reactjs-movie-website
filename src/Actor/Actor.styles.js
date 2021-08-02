@@ -17,6 +17,8 @@ export const Wrapper = styled.div`
 export const Image = styled.img`
   width: 100%;
   transition: all 0.3s;
+  height: 200px;
+  object-fit: cover;
 
   :hover {
     opacity: 0.8;
@@ -35,7 +37,6 @@ export const Image = styled.img`
 `;
 
 export const Content = styled.div`
-  flex-grow: 1;
   font-weight: bolder;
   margin: 0;
 

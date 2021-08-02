@@ -1,9 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 // Styles
 import { Wrapper, Image, Content } from "./Actor.styles";
-//Components
-import Thumb from "../components/Thumb/Thumb";
-import Grid from "../components/Grid/Grid";
 
 const Actor = ({ name, character, imageUrl }) => {
   return (
@@ -15,6 +13,12 @@ const Actor = ({ name, character, imageUrl }) => {
       </Content>
     </Wrapper>
   );
+};
+
+Actor.propTypes = {
+  name: PropTypes.string,
+  character: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 
 export default Actor;

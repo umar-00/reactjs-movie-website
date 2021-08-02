@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 // API
 import API from "../API";
+// Helper
+import { isPersistedState } from "../helpers";
 
 export const useMovieFetch = (movieId) => {
   const [state, setState] = useState({});
@@ -9,32 +11,44 @@ export const useMovieFetch = (movieId) => {
 
   console.log("Movie state: ", state);
 
-  const fetchMovie = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(false);
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        setLoading(true);
+        setError(false);
 
-      const movie = await API.fetchMovie(movieId);
-      const credits = await API.fetchCredits(movieId);
-      const directors = credits.crew.filter(
-        (member) => member.job === "Director"
-      );
+        const movie = await API.fetchMovie(movieId);
+        const credits = await API.fetchCredits(movieId);
+        const directors = credits.crew.filter(
+          (member) => member.job === "Director"
+        );
 
-      setState({
-        ...movie,
-        actors: credits.cast,
-        directors: directors,
-      });
+        setState({
+          ...movie,
+          actors: credits.cast,
+          directors: directors,
+        });
 
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+      }
+    };
+
+    const sessionState = isPersistedState(movieId);
+    console.log(sessionState);
+    if (sessionState) {
+      setState(sessionState);
       setLoading(false);
-    } catch (error) {
-      setError(true);
+      return;
     }
+    fetchMovie();
   }, [movieId]);
 
+  //Write to Session Storage
   useEffect(() => {
-    fetchMovie();
-  }, [movieId, fetchMovie]);
+    sessionStorage.setItem(movieId, JSON.stringify(state));
+  }, [movieId, state]);
 
   return { state, loading, error };
 };
