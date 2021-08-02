@@ -5,6 +5,7 @@ import { calcTime, convertMoney } from "../../helpers";
 
 // Styles
 import { Wrapper, ContentPill } from "./MovieInfoBar.styles";
+import PropTypes from "prop-types";
 
 const MovieInfoBar = ({ movie }) => {
   return (
@@ -22,6 +23,10 @@ const MovieInfoBar = ({ movie }) => {
       </div>
     </Wrapper>
   );
+};
+
+MovieInfoBar.propTypes = {
+  movie: PropTypes.object,
 };
 
 export default MovieInfoBar;
