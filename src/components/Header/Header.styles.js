@@ -18,6 +18,23 @@ export const Content = styled.div`
   /* margin: 0 auto; */
 `;
 
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  /* border: 2px solid white; */
+`;
+
+export const HeadingText = styled.h1`
+  font-size: 1.5rem;
+  padding: 0;
+  text-decoration: none;
+  /* font-size: 20px; */
+  margin: 0 10px;
+  /* padding: 0 20px; */
+`;
+
 export const LogoImg = styled.img`
   width: 200px;
 
